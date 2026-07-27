@@ -1,15 +1,101 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-on-surface: #181c1e;
+  --color-on-surface-variant: #434750;
+  --color-surface: #f7fafc;
+  --color-surface-variant: #e0e3e5;
+  --color-surface-container: #ebeef0;
+  --color-surface-container-low: #f1f4f6;
+  --color-surface-container-high: #e5e9eb;
+  --color-primary: #1d6d23;
+  --color-primary-fixed: #a4f69b;
+  --color-secondary: #006878;
+  --color-soft-gold: #c5b383;
+  --color-outline: #737781;
+  --color-outline-variant: #c3c6d2;
+  --color-deep-navy: #192f4d;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-surface text-on-surface;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+body {
+  margin: 0;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.nav-link {
+  @apply font-bold text-on-surface-variant transition-colors duration-300 hover:text-primary;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-3 rounded-lg bg-primary px-10 py-4 font-bold text-white transition-all hover:opacity-90;
+}
+
+.btn-light {
+  @apply inline-flex items-center justify-center gap-3 rounded-lg bg-white px-10 py-5 text-lg font-bold text-primary transition-all hover:bg-surface-variant;
+}
+
+.btn-ghost-light {
+  @apply inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-md transition-all hover:bg-white/20;
+}
+
+.footer-title {
+  @apply mb-6 text-sm font-bold uppercase tracking-widest text-soft-gold;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 20px -2px rgb(0 39 84 / 0.08);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.logo-pop img {
+  animation: logo-pop 700ms ease-out both;
+}
+
+@keyframes logo-pop {
+  0% {
+    transform: scale(0.96);
+  }
+  55% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
   }
 }
