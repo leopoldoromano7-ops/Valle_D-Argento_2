@@ -1,28 +1,51 @@
 @import "tailwindcss";
 
+:root {
+  --color-background: #fff8ee;
+  --color-background-secondary: #f4e8d8;
+  --color-surface: #fffcf8;
+  --color-primary: #c9826b;
+  --color-primary-hover: #b66f5b;
+  --color-secondary: #9ead91;
+  --color-secondary-hover: #879a7b;
+  --color-accent: #f3c5ae;
+  --color-text: #4d403a;
+  --color-text-muted: #786b64;
+  --color-border: #e5d6c7;
+}
+
 @theme {
   --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --color-on-surface: #181c1e;
-  --color-on-surface-variant: #434750;
-  --color-surface: #f7fafc;
-  --color-surface-variant: #e0e3e5;
-  --color-surface-container: #ebeef0;
-  --color-surface-container-low: #f1f4f6;
-  --color-surface-container-high: #e5e9eb;
-  --color-primary: #1d6d23;
-  --color-primary-fixed: #a4f69b;
-  --color-secondary: #006878;
-  --color-soft-gold: #c5b383;
-  --color-outline: #737781;
-  --color-outline-variant: #c3c6d2;
-  --color-deep-navy: #192f4d;
+  --color-background: #fff8ee;
+  --color-background-secondary: #f4e8d8;
+  --color-surface: #fffcf8;
+  --color-primary: #c9826b;
+  --color-primary-hover: #b66f5b;
+  --color-secondary: #9ead91;
+  --color-secondary-hover: #879a7b;
+  --color-accent: #f3c5ae;
+  --color-text: #4d403a;
+  --color-text-muted: #786b64;
+  --color-border: #e5d6c7;
+
+  --color-on-surface: #4d403a;
+  --color-on-surface-variant: #786b64;
+  --color-surface-variant: #f4e8d8;
+  --color-surface-container: #f4e8d8;
+  --color-surface-container-low: #fff8ee;
+  --color-surface-container-high: #f3c5ae;
+  --color-primary-fixed: #f3c5ae;
+  --color-soft-gold: #c9826b;
+  --color-outline: #786b64;
+  --color-outline-variant: #e5d6c7;
+  --color-deep-navy: #4d403a;
 }
 
 html,
 body {
-  @apply bg-surface text-on-surface;
+  @apply bg-background text-on-surface;
 }
 
 body {
@@ -56,7 +79,7 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-3 rounded-lg bg-primary px-10 py-4 font-bold text-white transition-all hover:opacity-90;
+  @apply inline-flex items-center justify-center gap-3 rounded-lg bg-primary px-10 py-4 font-bold text-white transition-all hover:bg-primary-hover;
 }
 
 .btn-light {
@@ -72,7 +95,7 @@ body {
 }
 
 .card-shadow {
-  box-shadow: 0 4px 20px -2px rgb(0 39 84 / 0.08);
+  box-shadow: 0 4px 20px -2px rgb(120 107 100 / 0.12);
 }
 
 .no-scrollbar::-webkit-scrollbar {

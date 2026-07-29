@@ -86,7 +86,6 @@ export default function Home() {
       <main id="top" className="pt-20">
         <section className="relative flex h-[85vh] min-h-[560px] items-center overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-primary/85 via-primary/45 to-transparent" />
             <img
               alt="Esterno della struttura Valle d'Argento 2"
               className="h-full w-full object-cover"
@@ -94,7 +93,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="relative z-20 mx-auto w-full max-w-7xl px-4 text-white md:px-12">
+          <div className="relative z-20 mx-auto w-full max-w-7xl px-4 text-white [text-shadow:0_2px_18px_rgb(0_0_0_/_0.45)] md:px-12">
             <div className="max-w-2xl">
               <span className="mb-6 inline-block rounded-full border border-soft-gold/30 bg-soft-gold/20 px-4 py-1 text-sm font-bold uppercase text-soft-gold backdrop-blur-sm">
                 Eccellenza Certificata ISO 9001

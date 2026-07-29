@@ -284,8 +284,8 @@ function CovidTab() {
           </p>
         </div>
 
-        <aside className="rounded-xl border border-[#f38c42]/40 bg-[#ffdbc7] p-6 lg:col-span-5">
-          <h3 className="text-xl font-bold text-[#733500]">Modalita di accesso</h3>
+        <aside className="rounded-xl border border-outline-variant/60 bg-primary-fixed/45 p-6 lg:col-span-5">
+          <h3 className="text-xl font-bold text-on-surface">Modalita di accesso</h3>
           <ul className="mt-5 space-y-3">
             {visitRules.map((rule) => (
               <li className="flex items-start gap-3" key={rule}>
@@ -296,11 +296,11 @@ function CovidTab() {
               </li>
             ))}
           </ul>
-          <div className="mt-8 rounded-lg border border-[#974800]/30 bg-white/60 p-4 text-center">
-            <p className="text-sm font-bold text-[#733500]">
+          <div className="mt-8 rounded-lg border border-primary/30 bg-white/70 p-4 text-center">
+            <p className="text-sm font-bold text-secondary">
               Per informazioni e prenotazioni
             </p>
-            <a className="mt-2 block text-3xl font-bold text-[#974800]" href="tel:089803498">
+            <a className="mt-2 block text-3xl font-bold text-primary" href="tel:089803498">
               089 / 803498
             </a>
           </div>

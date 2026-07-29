@@ -175,7 +175,7 @@ export default function Servizi() {
               </div>
             </article>
 
-            <article className="rounded-xl bg-[#d0e4ff] p-6 text-[#165484] shadow-sm md:col-span-4 md:p-9">
+            <article className="rounded-xl bg-primary-fixed p-6 text-on-surface shadow-sm md:col-span-4 md:p-9">
               <span className="material-symbols-outlined mb-7 text-4xl">
                 fitness_center
               </span>
@@ -193,14 +193,14 @@ export default function Servizi() {
               />
             </article>
 
-            <article className="rounded-xl border border-outline-variant/40 bg-[#ffdbc7] p-6 shadow-sm md:col-span-4 md:p-9">
-              <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-lg bg-[#974800] text-white">
+            <article className="rounded-xl border border-outline-variant/40 bg-surface-container-high p-6 shadow-sm md:col-span-4 md:p-9">
+              <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-white">
                 <span className="material-symbols-outlined">groups</span>
               </span>
-              <h2 className="text-2xl font-bold text-[#311300] md:text-3xl">
+              <h2 className="text-2xl font-bold text-on-surface md:text-3xl">
                 Vita Sociale e Animazione
               </h2>
-              <p className="mt-5 leading-relaxed text-[#733500]">
+              <p className="mt-5 leading-relaxed text-on-surface-variant">
                 Le attivita sociali e di animazione favoriscono integrazione,
                 socializzazione, rapporti familiari e superamento della solitudine.
               </p>
