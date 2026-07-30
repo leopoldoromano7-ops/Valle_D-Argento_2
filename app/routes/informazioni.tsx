@@ -15,11 +15,31 @@ export function meta({}: Route.MetaArgs) {
 
 const facilityImage = "/assets/struttura-esterno.jpg";
 
+// Configurazione delle tab: l'ordine qui e lo stesso mostrato nella pagina.
 const tabs = [
+  { id: "tutele", label: "Tutele" },
+  { id: "documenti", label: "Documenti" },
   { id: "pagamento", label: "Metodi di pagamento" },
   { id: "covid", label: "Prevenzione Covid-19" },
   { id: "risk", label: "Risk Management Procedure" },
   { id: "risk-management", label: "Risk Management" },
+];
+
+const datItems = [
+  "Accertamenti diagnostici",
+  "Scelte terapeutiche",
+  "Singoli trattamenti sanitari",
+];
+
+const usefulDocuments = [
+  "Carta dei Servizi",
+  "Regolamento",
+  "Informativa Privacy",
+  "Documenti ingresso ospiti",
+  "Corredo personale ospite",
+  "Politica della qualita",
+  "Modulo reclami, encomi, suggerimenti",
+  "Coordinate bancarie",
 ];
 
 const excludedCosts = [
@@ -37,7 +57,7 @@ const visitRules = [
   "Massima puntualita per consentire sanificazione e attivita di routine",
 ];
 
-// Contenuti lunghi spezzati in array per mantenere leggibili le tab informative.
+// Contenuti lunghi separati dal JSX per rendere piu semplice aggiornare i testi.
 const riskPremises = [
   "Gli eventi avversi in medicina rappresentano un importante problema di sanita pubblica, perche occorre assicurare l'erogazione delle prestazioni sanitarie garantendo la migliore qualita e sicurezza possibile.",
   "All'interno della R.S.A. Valle d'Argento 2 viene perseguita una politica generale di miglioramento continuo della qualita; in questo contesto assume grande rilevanza la gestione del rischio clinico.",
@@ -205,6 +225,8 @@ export default function Informazioni() {
 
         <section className="py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-12">
+            {activeTab === "tutele" && <TuteleTab />}
+            {activeTab === "documenti" && <DocumentsTab />}
             {activeTab === "pagamento" && <PaymentTab />}
             {activeTab === "covid" && <CovidTab />}
             {activeTab === "risk" && <RiskTab />}
@@ -214,6 +236,115 @@ export default function Informazioni() {
       </main>
 
       <SiteFooter />
+    </div>
+  );
+}
+
+function TuteleTab() {
+  return (
+    <div>
+      <TabTitle icon="verified_user" title="Tutele" />
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <article className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <span className="material-symbols-outlined filled">balance</span>
+          </span>
+          <h3 className="mt-5 text-2xl font-bold text-primary">
+            Amministratore di Sostegno
+          </h3>
+          <div className="mt-5 space-y-4 leading-relaxed text-on-surface-variant">
+            <p>
+              L'Amministratore di Sostegno e una figura prevista dalla legge per
+              tutelare e supportare le persone che, a causa di condizioni di
+              fragilita fisica o psichica, non sono in grado di provvedere
+              autonomamente ai propri interessi, anche in modo parziale o
+              temporaneo.
+            </p>
+            <p>
+              Il suo compito e accompagnare la persona nelle decisioni e negli atti
+              necessari alla gestione della vita quotidiana, garantendo protezione,
+              sostegno e rispetto della sua volonta.
+            </p>
+            <p>
+              Per informazioni sulla procedura di nomina e sulla presentazione
+              della domanda e possibile consultare la sezione dedicata del
+              Tribunale di Salerno.
+            </p>
+          </div>
+        </article>
+
+        <article className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+            <span className="material-symbols-outlined filled">
+              clinical_notes
+            </span>
+          </span>
+          <h3 className="mt-5 text-2xl font-bold text-primary">
+            Disposizioni Anticipate di Trattamento (DAT)
+          </h3>
+          <div className="mt-5 space-y-4 leading-relaxed text-on-surface-variant">
+            <p>
+              Le Disposizioni Anticipate di Trattamento, conosciute anche come
+              testamento biologico, sono regolate dalla Legge n. 219/2017 e
+              consentono a ogni persona maggiorenne e capace di intendere e di
+              volere di esprimere preventivamente le proprie volonta in merito ai
+              trattamenti sanitari.
+            </p>
+            <p>Le DAT possono riguardare:</p>
+            <BulletList items={datItems} />
+            <p>
+              La RSA garantisce il rispetto delle volonta espresse dall'ospite
+              secondo quanto previsto dalla normativa vigente. Per informazioni
+              sulle modalita di redazione e deposito delle DAT e possibile
+              rivolgersi al proprio Comune di residenza o agli uffici competenti.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+}
+
+function DocumentsTab() {
+  return (
+    <div>
+      <TabTitle icon="folder_open" title="Documenti" />
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant lg:col-span-5">
+          <p>
+            In questa sezione sono disponibili i documenti utili per conoscere la
+            RSA e accedere ai suoi servizi.
+          </p>
+          <p>
+            E possibile consultare e scaricare la modulistica per l'ammissione, la
+            Carta dei Servizi, i regolamenti interni e la documentazione
+            informativa relativa alla struttura e alle modalita di accoglienza.
+          </p>
+          <p>
+            L'area documenti e pensata per offrire a ospiti e familiari un accesso
+            semplice e trasparente alle informazioni necessarie.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
+          {usefulDocuments.map((document) => (
+            <div
+              className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant bg-white p-5 shadow-sm"
+              key={document}
+            >
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <span className="material-symbols-outlined">description</span>
+                </span>
+                <span className="font-bold text-on-surface">{document}</span>
+              </div>
+              <span className="material-symbols-outlined text-primary">
+                download
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

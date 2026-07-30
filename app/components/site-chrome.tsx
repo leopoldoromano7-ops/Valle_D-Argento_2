@@ -1,14 +1,23 @@
+import { useState } from "react";
 import { useLocation } from "react-router";
 
 const logoUrl = "/assets/logo-argento-transparent.png";
 
+const navItems = [
+  { id: "struttura", label: "La Residenza", href: "/struttura" },
+  { id: "accoglienza", label: "Accoglienza", href: "/accoglienza" },
+  { id: "info", label: "Informazioni", href: "/informazioni" },
+  { id: "contact", label: "Contatti", href: "/contatti" },
+];
+
 export function SiteHeader() {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const activeItem =
     location.pathname === "/struttura"
       ? "struttura"
-      : location.pathname === "/servizi"
-        ? "services"
+      : location.pathname === "/accoglienza"
+        ? "accoglienza"
       : location.pathname === "/informazioni"
         ? "info"
       : location.pathname === "/contatti"
@@ -26,12 +35,11 @@ export function SiteHeader() {
     <header className="fixed top-0 z-50 w-full bg-surface/90 shadow-sm backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-center gap-5 px-4 py-4 md:px-12">
         <nav className="hidden items-center gap-5 md:flex">
-          <a className={navClass("struttura")} href="/struttura">
-            La struttura
-          </a>
-          <a className={navClass("services")} href="/servizi">
-            I servizi
-          </a>
+          {navItems.slice(0, 2).map((item) => (
+            <a className={navClass(item.id)} href={item.href} key={item.id}>
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <a
@@ -47,14 +55,46 @@ export function SiteHeader() {
         </a>
 
         <nav className="hidden items-center gap-5 md:flex">
-          <a className={navClass("info")} href="/informazioni">
-            Informazioni
-          </a>
-          <a className={navClass("contact")} href="/contatti">
-            Contatti
-          </a>
+          {navItems.slice(2).map((item) => (
+            <a className={navClass(item.id)} href={item.href} key={item.id}>
+              {item.label}
+            </a>
+          ))}
         </nav>
+
+        <button
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Chiudi menu" : "Apri menu"}
+          className="absolute right-4 flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant bg-white/80 text-primary shadow-sm transition-all hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 md:hidden"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          type="button"
+        >
+          <span className="material-symbols-outlined">
+            {isMenuOpen ? "close" : "menu"}
+          </span>
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <nav className="border-t border-outline-variant/50 bg-surface px-4 py-3 shadow-md md:hidden">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-2">
+            {navItems.map((item) => (
+              <a
+                className={`rounded-lg px-4 py-3 font-bold transition-colors ${
+                  activeItem === item.id
+                    ? "bg-primary text-white"
+                    : "text-on-surface-variant hover:bg-surface-container"
+                }`}
+                href={item.href}
+                key={item.id}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
@@ -95,7 +135,7 @@ export function SiteFooter() {
 
 function FooterLinks({ title, links }: { title: string; links: string[] }) {
   const getHref = (link: string) =>
-    title === "Residenza" && link !== "Prenota Soggiorno" ? "/servizi" : "/";
+    title === "Residenza" && link !== "Prenota Soggiorno" ? "/#services" : "/";
 
   return (
     <div>
