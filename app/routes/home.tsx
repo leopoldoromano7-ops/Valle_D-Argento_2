@@ -694,6 +694,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Blocco CTA visite mantenuto commentato per eventuale riattivazione futura.
         <section className="bg-deep-navy py-16">
           <div className="mx-auto max-w-7xl px-4 text-center md:px-12">
             <h2 className="mb-6 text-3xl font-bold text-white md:text-5xl">
@@ -705,6 +706,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+        */}
       </main>
 
       <SiteFooter />
