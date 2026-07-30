@@ -109,6 +109,14 @@ export function SiteFooter() {
             © 2024 Valle d'Argento 2 - RSA & Senior Living. ISO 9001 Certified
             Quality Care.
           </p>
+          <div className="flex items-center gap-3">
+            <SocialLink
+              href="https://www.facebook.com/RSAVALLEDARGENTO2/?locale=it_IT"
+              label="Facebook"
+              type="facebook"
+            />
+            <SocialLink href="#" label="Instagram" type="instagram" />
+          </div>
         </div>
 
         <FooterLinks
@@ -162,5 +170,52 @@ function ContactItem({ icon, text }: { icon: string; text: string }) {
       <span className="material-symbols-outlined text-soft-gold">{icon}</span>
       <span className="text-sm">{text}</span>
     </li>
+  );
+}
+
+function SocialLink({
+  href,
+  label,
+  type,
+}: {
+  href: string;
+  label: string;
+  type: "facebook" | "instagram";
+}) {
+  return (
+    <a
+      aria-label={label}
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-surface-variant/30 text-surface-variant transition-all hover:border-soft-gold hover:bg-soft-gold hover:text-deep-navy"
+      href={href}
+      rel={href === "#" ? undefined : "noreferrer"}
+      target={href === "#" ? undefined : "_blank"}
+    >
+      {type === "facebook" ? <FacebookIcon /> : <InstagramIcon />}
+    </a>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.24 22 17.08 22 12.06Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <rect height="16" rx="5" width="16" x="4" y="4" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M17.5 6.8h.01" />
+    </svg>
   );
 }
