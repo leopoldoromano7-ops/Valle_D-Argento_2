@@ -21,7 +21,8 @@ const tabs = [
   { id: "documenti", label: "Documenti" },
   { id: "trasparenza", label: "Trasparenza" },
   { id: "pagamento", label: "Metodi di pagamento" },
-  { id: "gestione", label: "Gestione" },
+  { id: "lista-attesa", label: "Lista d'attesa" },
+  { id: "soddisfazione-utenti", label: "Soddisfazione utenti" },
 ];
 
 const datItems = [
@@ -196,7 +197,8 @@ export default function Informazioni() {
             {activeTab === "documenti" && <DocumentsTab />}
             {activeTab === "trasparenza" && <TransparencyTab />}
             {activeTab === "pagamento" && <PaymentTab />}
-            {activeTab === "gestione" && <ManagementTab />}
+            {activeTab === "lista-attesa" && <WaitingListTab />}
+            {activeTab === "soddisfazione-utenti" && <UserSatisfactionTab />}
           </div>
         </section>
       </main>
@@ -424,78 +426,83 @@ function TransparencyTab() {
   );
 }
 
-function ManagementTab() {
+function WaitingListTab() {
   return (
     <div>
-      <TabTitle icon="assignment_turned_in" title="Gestione" />
-      <div className="space-y-8">
-        <section className="rounded-xl border border-primary/30 bg-primary/5 p-6 md:p-8">
-          <h3 className="text-2xl font-bold text-primary">
-            Gestione della lista di attesa
-          </h3>
-          <div className="mt-5 space-y-4 leading-relaxed text-on-surface-variant">
-            <p>
-              Presso la RSA Valle d'Argento 2 non e presente una lista d'attesa
-              gestita direttamente dalla struttura, in quanto tutti i posti letto
-              sono accreditati con il Servizio Sanitario Regionale.
-            </p>
-            <p>
-              L'accesso alla Residenza avviene esclusivamente attraverso il
-              percorso previsto dalla normativa regionale: richieste di
-              inserimento, formazione e gestione delle liste d'attesa, nonche
-              autorizzazione agli ingressi, sono di competenza del Distretto
-              Sanitario territorialmente competente.
-            </p>
-            <p>
-              La struttura provvede all'accoglienza degli utenti sulla base delle
-              autorizzazioni e delle assegnazioni trasmesse dal Distretto
-              Sanitario, nel rispetto della disponibilita dei posti letto
-              accreditati e delle procedure previste dalla programmazione
-              sociosanitaria regionale.
-            </p>
-          </div>
-        </section>
-
-        <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant lg:col-span-7">
-              <h3 className="text-2xl font-bold text-primary">
-                Risultati soddisfazione utenti
-              </h3>
-              <p>
-                Nel corso dell'anno 2025 e stato somministrato il questionario di
-                soddisfazione agli ospiti e, ove necessario, ai loro familiari o
-                caregiver. Sono state raccolte e analizzate 38 schede di
-                valutazione, per un totale di 684 risposte complessive.
-              </p>
-              <BulletList items={satisfactionAreas} />
-            </div>
-
-            <aside className="space-y-4 lg:col-span-5">
-              {satisfactionResults.map(([label, value]) => (
-                <div className="rounded-lg bg-surface-container-low p-5" key={label}>
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="font-bold text-on-surface">{label}</span>
-                    <span className="text-2xl font-bold text-primary">{value}</span>
-                  </div>
-                  <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
-                    <div
-                      className="h-full rounded-full bg-primary"
-                      style={{ width: value }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </aside>
-          </div>
-          <p className="mt-6 leading-relaxed text-on-surface-variant">
-            L'analisi evidenzia un livello di soddisfazione complessivamente
-            positivo. I livelli di gradimento piu elevati riguardano gentilezza e
-            disponibilita del personale, assistenza infermieristica e ausiliaria,
-            igiene personale degli ospiti e clima di accoglienza della struttura.
+      <TabTitle icon="playlist_add_check" title="Lista d'attesa" />
+      <section className="rounded-xl border border-primary/30 bg-primary/5 p-6 md:p-8">
+        <h3 className="text-2xl font-bold text-primary">
+          Gestione della lista di attesa
+        </h3>
+        <div className="mt-5 space-y-4 leading-relaxed text-on-surface-variant">
+          <p>
+            Presso la RSA Valle d'Argento 2 non e presente una lista d'attesa
+            gestita direttamente dalla struttura, in quanto tutti i posti letto
+            sono accreditati con il Servizio Sanitario Regionale.
           </p>
-        </section>
-      </div>
+          <p>
+            L'accesso alla Residenza avviene esclusivamente attraverso il
+            percorso previsto dalla normativa regionale: richieste di
+            inserimento, formazione e gestione delle liste d'attesa, nonche
+            autorizzazione agli ingressi, sono di competenza del Distretto
+            Sanitario territorialmente competente.
+          </p>
+          <p>
+            La struttura provvede all'accoglienza degli utenti sulla base delle
+            autorizzazioni e delle assegnazioni trasmesse dal Distretto
+            Sanitario, nel rispetto della disponibilita dei posti letto
+            accreditati e delle procedure previste dalla programmazione
+            sociosanitaria regionale.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function UserSatisfactionTab() {
+  return (
+    <div>
+      <TabTitle icon="sentiment_satisfied" title="Soddisfazione utenti" />
+      <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant lg:col-span-7">
+            <h3 className="text-2xl font-bold text-primary">
+              Risultati soddisfazione utenti
+            </h3>
+            <p>
+              Nel corso dell'anno 2025 e stato somministrato il questionario di
+              soddisfazione agli ospiti e, ove necessario, ai loro familiari o
+              caregiver. Sono state raccolte e analizzate 38 schede di
+              valutazione, per un totale di 684 risposte complessive.
+            </p>
+            <BulletList items={satisfactionAreas} />
+          </div>
+
+          <aside className="space-y-4 lg:col-span-5">
+            {satisfactionResults.map(([label, value]) => (
+              <div className="rounded-lg bg-surface-container-low p-5" key={label}>
+                <div className="flex items-center justify-between gap-4">
+                  <span className="font-bold text-on-surface">{label}</span>
+                  <span className="text-2xl font-bold text-primary">{value}</span>
+                </div>
+                <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
+                  <div
+                    className="h-full rounded-full bg-primary"
+                    style={{ width: value }}
+                  />
+                </div>
+              </div>
+            ))}
+          </aside>
+        </div>
+        <p className="mt-6 leading-relaxed text-on-surface-variant">
+          L'analisi evidenzia un livello di soddisfazione complessivamente
+          positivo. I livelli di gradimento piu elevati riguardano gentilezza e
+          disponibilita del personale, assistenza infermieristica e ausiliaria,
+          igiene personale degli ospiti e clima di accoglienza della struttura.
+        </p>
+      </section>
     </div>
   );
 }
