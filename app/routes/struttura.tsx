@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "Scopri ambienti, camere, spazi comuni, vita quotidiana e orari di visita della RSA Valle d'Argento 2.",
+        "Scopri ambienti, camere, spazi comuni, vita in comunita e orari di visita della RSA Valle d'Argento 2.",
     },
   ];
 }
@@ -84,6 +84,24 @@ const dailySchedule = [
     time: "Dalle ore 18.00",
     title: "Sera e riposo notturno",
     text: "Cena, preparazione al riposo, terapie serali e assistenza notturna continua per sorveglianza, bisogni degli ospiti e interventi necessari.",
+  },
+];
+
+const communityLifeItems = [
+  {
+    icon: "photo_library",
+    title: "Foto eventi e attivita",
+    text: "La vita in RSA viene raccontata attraverso momenti di socializzazione, laboratori, feste, attivita ricreative e iniziative condivise con ospiti, familiari e personale.",
+  },
+  {
+    icon: "event_available",
+    title: "Attivita in programma",
+    text: "Le proposte vengono organizzate in base agli interessi e alle capacita degli ospiti, alternando attivita educative, occupazionali, musicali e momenti di incontro.",
+  },
+  {
+    icon: "campaign",
+    title: "Inviti e manifestazioni",
+    text: "La struttura promuove occasioni di partecipazione alla vita comunitaria, valorizzando ricorrenze, eventi interni e iniziative aperte alla presenza dei familiari.",
   },
 ];
 
@@ -365,6 +383,69 @@ export default function Struttura() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 md:grid-cols-12 md:px-12">
+            <div className="md:col-span-5">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+                La vita in comunita
+              </span>
+              <h2 className="mt-2 text-3xl font-bold text-primary md:text-4xl">
+                Attivita, relazioni e momenti condivisi
+              </h2>
+              <div className="mt-5 space-y-4 text-lg leading-relaxed text-on-surface-variant">
+                <p>
+                  La RSA Valle d'Argento 2 promuove una vita comunitaria attiva,
+                  fatta di occasioni di incontro, attivita ricreative e momenti di
+                  partecipazione pensati per sostenere il benessere emotivo e
+                  relazionale degli ospiti.
+                </p>
+                <p>
+                  Le iniziative vengono programmate periodicamente e adattate ai
+                  bisogni, agli interessi e alle possibilita di ciascuna persona,
+                  favorendo socializzazione, continuita affettiva e senso di
+                  appartenenza.
+                </p>
+              </div>
+            </div>
+
+            <div className="md:col-span-7">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                {communityLifeItems.map((item) => (
+                  <article
+                    className="border border-outline-variant bg-white p-5 shadow-sm"
+                    key={item.title}
+                  >
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <span className="material-symbols-outlined filled">
+                        {item.icon}
+                      </span>
+                    </span>
+                    <h3 className="mt-5 text-lg font-bold text-primary">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">
+                      {item.text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <img
+                  alt="Giardino e spazi esterni della RSA Valle d'Argento 2"
+                  className="h-64 w-full object-cover shadow-lg"
+                  src={facilityImage}
+                />
+                <img
+                  alt="Esterno della struttura Valle d'Argento 2"
+                  className="h-64 w-full object-cover shadow-lg"
+                  src={facilityCloseImage}
+                />
+              </div>
             </div>
           </div>
         </section>

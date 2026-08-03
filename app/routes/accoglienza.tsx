@@ -13,37 +13,42 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const healthDocuments = [
-  "Documento di identita e tessera sanitaria",
-  "Richiesta di Valutazione Multidimensionale compilata dal medico curante",
-  "Documentazione clinica aggiornata",
-  "Terapie farmacologiche in corso",
-  "Eventuali referti specialistici recenti",
-  "Eventuali piani terapeutici e prescrizioni sanitarie",
+  "Certificazione del medico curante relativa alle condizioni cliniche dell'utente",
+  "Cartelle cliniche e lettere di dimissione ospedaliera di ricoveri precedenti",
+  "Referti di visite specialistiche ed esami diagnostici recenti, preferibilmente effettuati negli ultimi 3 mesi",
+  "Referti di esami ematochimici e strumentali disponibili",
+  "Terapia farmacologica in corso con indicazione di farmaci, dosaggi e modalita di somministrazione",
+  "Relazioni sanitarie e assistenziali precedenti: ADI, servizi territoriali, altre strutture residenziali o semiresidenziali",
+  "Documentazione relativa a patologie croniche, interventi chirurgici pregressi e condizioni cliniche rilevanti",
+  "Certificazioni relative ad allergie, intolleranze farmacologiche o alimentari",
+  "Indicazioni su eventuali necessita dietetiche specifiche",
 ];
 
 const administrativeDocuments = [
-  "Documento di identita del referente familiare o amministratore di sostegno",
-  "Codice fiscale dell'ospite e del referente",
-  "Verbale di invalidita o altra documentazione socio-assistenziale disponibile",
-  "Recapiti telefonici e indirizzi utili per le comunicazioni",
-  "Coordinate e riferimenti necessari per gli adempimenti amministrativi",
+  "Documento di identita in corso di validita",
+  "Codice fiscale",
+  "Tessera sanitaria",
+  "Certificato di invalidita, di accompagnamento ed eventuale documentazione relativa all'esenzione ticket",
+  "Eventuale documento di identita e codice fiscale del familiare, tutore o amministratore di sostegno referente",
+  "Documentazione relativa alla nomina di tutore, curatore o amministratore di sostegno, se presente",
+  "Recapiti aggiornati dei familiari o referenti da contattare in caso di necessita",
 ];
 
 const accessSteps = [
   {
     icon: "assignment",
     title: "Richiesta e valutazione",
-    text: "L'accesso alla RSA avviene attraverso la presa in carico e la valutazione dei bisogni sanitari, assistenziali e sociali della persona.",
+    text: "Il medico di medicina generale, i servizi sociali territoriali o altri servizi sanitari segnalano il bisogno assistenziale dell'utente e viene richiesta una valutazione multidimensionale.",
   },
   {
-    icon: "support_agent",
-    title: "Colloquio con l'ufficio accettazione",
-    text: "La famiglia viene accompagnata nella raccolta delle informazioni e nella verifica dei documenti necessari per l'ingresso.",
+    icon: "groups",
+    title: "Valutazione UVI distrettuale",
+    text: "L'Unita di Valutazione Integrata dell'ASL valuta non autosufficienza, bisogni sanitari e sociali e impossibilita di garantire adeguata assistenza al domicilio.",
   },
   {
     icon: "fact_check",
-    title: "Definizione del percorso",
-    text: "Prima dell'accoglienza vengono condivise le esigenze dell'ospite, le terapie, le abitudini quotidiane e gli aspetti organizzativi.",
+    title: "Autorizzazione e ingresso",
+    text: "L'accesso in RSA viene autorizzato dal Distretto Sanitario competente. L'ingresso avviene in base all'autorizzazione ricevuta, alla disponibilita di posti e alla tipologia assistenziale necessaria.",
   },
 ];
 
@@ -63,9 +68,9 @@ export default function Accoglienza() {
                 Modalita di accesso e documenti per l'ingresso
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-relaxed text-on-surface-variant md:text-xl">
-                Una pagina pratica per orientare ospiti e familiari nelle fasi di
-                ingresso in struttura, dalla richiesta iniziale alla raccolta della
-                documentazione sanitaria e amministrativa.
+                L'accesso alla RSA Valle d'Argento 2 avviene attraverso un
+                percorso autorizzato dall'ASL, con il supporto della struttura
+                nelle fasi informative, organizzative e documentali.
               </p>
             </div>
 
@@ -78,8 +83,8 @@ export default function Accoglienza() {
                 necessaria e possibile contattare l'ufficio accettazione.
               </p>
               <div className="mt-6 space-y-3 font-bold text-on-surface">
-                <p>Tel. __________</p>
-                <p>Email __________</p>
+                <p>Tel. 089 803498</p>
+                <p>Email rsa.valledargento2@gmail.com</p>
               </div>
             </aside>
           </div>
@@ -120,6 +125,49 @@ export default function Accoglienza() {
         </section>
 
         <section className="bg-surface-container-low py-16">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-12 md:px-12">
+            <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant md:col-span-7">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+                Modalita di accesso
+              </span>
+              <h2 className="text-3xl font-bold text-primary md:text-4xl">
+                Accesso da domicilio
+              </h2>
+              <p>
+                La RSA Valle d'Argento 2 e una struttura accreditata al Servizio
+                Sanitario Nazionale regionale. L'accesso dell'utente proveniente
+                dal proprio domicilio avviene generalmente attraverso un percorso
+                autorizzato dall'ASL, non con il solo contatto diretto con la
+                struttura.
+              </p>
+              <p>
+                Se la valutazione risulta appropriata, viene predisposto un Piano
+                Assistenziale Individualizzato e l'utente viene inserito nella rete
+                dei servizi residenziali dal Distretto Sanitario competente.
+              </p>
+              <p>
+                La quota sanitaria e a carico del SSN nei limiti previsti.
+                L'eventuale quota sociale puo essere compartecipata dall'utente e
+                dall'ente competente, secondo la normativa applicabile e la
+                situazione economica dell'assistito.
+              </p>
+            </div>
+
+            <aside className="h-fit border-l-4 border-primary bg-white p-6 shadow-sm md:col-span-5">
+              <h3 className="text-2xl font-bold text-primary">
+                Accesso da ospedale o casa di cura
+              </h3>
+              <p className="mt-4 leading-relaxed text-on-surface-variant">
+                Nel caso in cui l'ingresso in RSA avvenga a seguito di dimissione
+                da una struttura ospedaliera o da una casa di cura, la presa in
+                carico viene programmata in collaborazione con i servizi sanitari
+                competenti e con la struttura dimettente.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section className="py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:px-12">
             <DocumentList
               icon="clinical_notes"
@@ -131,6 +179,14 @@ export default function Accoglienza() {
               items={administrativeDocuments}
               title="Documenti amministrativi necessari"
             />
+          </div>
+          <div className="mx-auto mt-8 max-w-7xl px-4 md:px-12">
+            <p className="border-l-4 border-secondary bg-surface-container-low p-5 leading-relaxed text-on-surface-variant">
+              Al momento della disponibilita del posto letto, il personale della
+              RSA contatta i familiari o il referente dell'utente per concordare
+              data e modalita di ingresso. La documentazione raccolta consente una
+              presa in carico appropriata e la continuita delle cure.
+            </p>
           </div>
         </section>
       </main>

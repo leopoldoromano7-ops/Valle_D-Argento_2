@@ -10,6 +10,8 @@ const navItems = [
   { id: "contact", label: "Contatti", href: "/contatti" },
 ];
 
+const contactEmail = "rsa.valledargento2@gmail.com";
+
 export function SiteHeader() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -106,8 +108,8 @@ export function SiteFooter() {
         <div className="space-y-6">
           <div className="text-2xl font-bold">Valle d'Argento 2</div>
           <p className="max-w-xs text-sm leading-relaxed text-surface-variant/80">
-            © 2024 Valle d'Argento 2 - RSA & Senior Living. ISO 9001 Certified
-            Quality Care.
+            © 2024 Valle d'Argento 2 - Residenza Sanitaria Assistenziale
+            accreditata con il Servizio Sanitario Nazionale.
           </p>
           <div className="flex items-center gap-3">
             <SocialLink
@@ -121,19 +123,29 @@ export function SiteFooter() {
 
         <FooterLinks
           title="Residenza"
-          links={["Servizi Medici", "La Nostra Cucina", "Eventi e Attivita", "Prenota Soggiorno"]}
+          links={[
+            ["La Residenza", "/struttura"],
+            ["Servizi", "/#services"],
+            ["Accoglienza", "/accoglienza"],
+            ["Vita in comunita", "/struttura"],
+          ]}
         />
         <FooterLinks
           title="Informazioni"
-          links={["Privacy Policy", "Terms of Service", "Cookie Policy", "Accessibility Statement"]}
+          links={[
+            ["Documenti", "/informazioni"],
+            ["Tutele", "/informazioni"],
+            ["Trasparenza", "/informazioni"],
+            ["Contatti", "/contatti"],
+          ]}
         />
 
         <div>
           <h3 className="footer-title">Contatti</h3>
           <ul className="space-y-4 text-surface-variant/80">
-            <ContactItem icon="location_on" text="Via delle Alpi, 12, 10100 Torino, Italia" />
-            <ContactItem icon="call" text="+39 011 123 4567" />
-            <ContactItem icon="mail" text="info@valledargento.it" />
+            <ContactItem icon="location_on" text="Via U. Linguiti n. 53 - 84095 Giffoni Valle Piana (SA)" />
+            <ContactItem icon="call" text="Tel. / fax 089.803.498" />
+            <ContactItem icon="mail" text={contactEmail} />
           </ul>
         </div>
       </div>
@@ -141,21 +153,18 @@ export function SiteFooter() {
   );
 }
 
-function FooterLinks({ title, links }: { title: string; links: string[] }) {
-  const getHref = (link: string) =>
-    title === "Residenza" && link !== "Prenota Soggiorno" ? "/#services" : "/";
-
+function FooterLinks({ title, links }: { title: string; links: string[][] }) {
   return (
     <div>
       <h3 className="footer-title">{title}</h3>
       <ul className="space-y-4">
-        {links.map((link) => (
-          <li key={link}>
+        {links.map(([label, href]) => (
+          <li key={label}>
             <a
               className="text-sm text-surface-variant/80 underline decoration-soft-gold transition-all hover:text-soft-gold"
-              href={getHref(link)}
+              href={href}
             >
-              {link}
+              {label}
             </a>
           </li>
         ))}

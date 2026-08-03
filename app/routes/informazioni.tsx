@@ -8,7 +8,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "Informazioni su metodi di pagamento, prevenzione Covid-19 e procedure di risk management della RSA Valle d'Argento 2.",
+        "Informazioni su documenti, trasparenza, metodi di pagamento e procedure di risk management della RSA Valle d'Argento 2.",
     },
   ];
 }
@@ -19,6 +19,7 @@ const facilityImage = "/assets/struttura-esterno.jpg";
 const tabs = [
   { id: "tutele", label: "Tutele" },
   { id: "documenti", label: "Documenti" },
+  { id: "trasparenza", label: "Trasparenza" },
   { id: "pagamento", label: "Metodi di pagamento" },
   { id: "covid", label: "Prevenzione Covid-19" },
   { id: "risk", label: "Risk Management Procedure" },
@@ -170,6 +171,94 @@ const equipmentRisks = [
 
 const fallRisks = ["Fattori estrinseci", "Fattori intrinseci"];
 
+const parmObjectives = [
+  "Prevenire e ridurre gli eventi avversi",
+  "Promuovere una cultura della sicurezza tra gli operatori",
+  "Monitorare i processi assistenziali e organizzativi",
+  "Individuare e attuare azioni di miglioramento",
+];
+
+const parmRiskAreas = [
+  "Sicurezza della terapia farmacologica e corretta gestione dei farmaci",
+  "Prevenzione delle cadute degli ospiti",
+  "Prevenzione e gestione delle lesioni da pressione",
+  "Prevenzione delle infezioni correlate all'assistenza",
+  "Gestione delle emergenze e sicurezza degli ambienti",
+  "Appropriatezza assistenziale e continuita delle cure",
+];
+
+const parmActivities = [
+  "Monitoraggio degli eventi avversi e delle non conformita",
+  "Verifiche periodiche dei processi assistenziali",
+  "Audit interni e analisi delle criticita",
+  "Formazione e aggiornamento del personale",
+  "Applicazione di procedure e protocolli aziendali",
+];
+
+const parmEvents = [
+  {
+    type: "Cadute accidentali degli ospiti",
+    count: "3",
+    analysis: "Eventi valutati dall'equipe assistenziale con analisi dei fattori di rischio individuali e ambientali",
+    actions: "Rivalutazione del rischio caduta, aggiornamento PAI, interventi di prevenzione e sorveglianza",
+  },
+  {
+    type: "Lesioni da pressione",
+    count: "2",
+    analysis: "Monitoraggio degli ospiti a rischio e verifica dell'applicazione delle procedure assistenziali",
+    actions: "Valutazione periodica della cute, utilizzo di presidi antidecubito e pianificazione assistenziale personalizzata",
+  },
+  {
+    type: "Errori o criticita nella gestione della terapia farmacologica",
+    count: "1",
+    analysis: "Verifica delle modalita di prescrizione, preparazione e somministrazione della terapia",
+    actions: "Controlli periodici, applicazione delle procedure interne e sensibilizzazione del personale",
+  },
+  {
+    type: "Eventi infettivi correlati all'assistenza",
+    count: "0",
+    analysis: "Monitoraggio degli episodi infettivi e delle misure di prevenzione adottate",
+    actions: "Applicazione protocolli igienico-sanitari, formazione operatori e controllo delle procedure",
+  },
+  {
+    type: "Reclami/segnalazioni di ospiti e familiari",
+    count: "2",
+    analysis: "Analisi delle segnalazioni ricevute e valutazione delle criticita organizzative",
+    actions: "Gestione delle segnalazioni, risposta agli interessati e attivazione di eventuali miglioramenti",
+  },
+  {
+    type: "Infortuni del personale",
+    count: "0",
+    analysis: "Analisi degli eventi e verifica delle condizioni di sicurezza",
+    actions: "Applicazione procedure di sicurezza, formazione e prevenzione dei rischi lavorativi",
+  },
+  {
+    type: "Near miss",
+    count: "1",
+    analysis: "Raccolta e analisi delle segnalazioni per migliorare i processi",
+    actions: "Azioni preventive e revisione delle procedure operative",
+  },
+];
+
+const legalMonitoring = [
+  ["Denunce da parte di ospiti o familiari", "0", "Nessuna denuncia presentata nell'anno 2025"],
+  ["Apertura di pratiche assicurative per richieste di risarcimento danni", "0", "Nessuna pratica assicurativa aperta nell'anno 2025"],
+  ["Provvedimenti legali", "0", "Nessun provvedimento legale adottato o ricevuto nel corso dell'anno 2025"],
+];
+
+const satisfactionAreas = [
+  "La giornata in struttura: organizzazione, orari, igiene personale, abbigliamento, colazione, ristorazione, animazione e riposo",
+  "L'assistenza e le cure: operato di medici, infermieri, fisioterapisti e personale ausiliario",
+  "I rapporti con il personale: gentilezza, disponibilita, ascolto e attenzione ai bisogni",
+  "La Residenza: comfort della stanza, qualita degli spazi comuni e aree esterne",
+];
+
+const satisfactionResults = [
+  ["Soddisfacente", "81%"],
+  ["Accettabile", "16%"],
+  ["Non soddisfacente", "3%"],
+];
+
 export default function Informazioni() {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
 
@@ -227,6 +316,7 @@ export default function Informazioni() {
           <div className="mx-auto max-w-7xl px-4 md:px-12">
             {activeTab === "tutele" && <TuteleTab />}
             {activeTab === "documenti" && <DocumentsTab />}
+            {activeTab === "trasparenza" && <TransparencyTab />}
             {activeTab === "pagamento" && <PaymentTab />}
             {activeTab === "covid" && <CovidTab />}
             {activeTab === "risk" && <RiskTab />}
@@ -344,6 +434,181 @@ function DocumentsTab() {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function TransparencyTab() {
+  return (
+    <div>
+      <TabTitle icon="visibility" title="Trasparenza" />
+      <div className="space-y-10">
+        <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant lg:col-span-7">
+              <h3 className="text-2xl font-bold text-primary">
+                PARM - Piano Annuale di Risk Management
+              </h3>
+              <p>
+                La RSA R3 Valle d'Argento 2 adotta il Piano Annuale di Risk
+                Management quale strumento per la gestione del rischio clinico e
+                organizzativo, con l'obiettivo di garantire la sicurezza degli
+                ospiti, migliorare la qualita dell'assistenza e promuovere il
+                miglioramento continuo dei processi.
+              </p>
+              <p>
+                Gli esiti delle attivita di Risk Management vengono valutati
+                periodicamente dalla Direzione e dall'equipe della struttura, al
+                fine di individuare eventuali criticita e definire interventi
+                correttivi e migliorativi.
+              </p>
+            </div>
+
+            <aside className="rounded-lg bg-surface-container-low p-5 lg:col-span-5">
+              <h4 className="font-bold text-primary">Data di aggiornamento</h4>
+              <p className="mt-2 text-3xl font-bold text-on-surface">
+                23/01/2026
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
+                Monitoraggio riferito all'anno 2025.
+              </p>
+            </aside>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <InfoPanel title="Obiettivi del PARM" items={parmObjectives} />
+            <InfoPanel title="Aree monitorate" items={parmRiskAreas} />
+            <InfoPanel title="Attivita previste" items={parmActivities} />
+          </div>
+        </section>
+
+        <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <h3 className="text-2xl font-bold text-primary">
+            Eventi monitorati 2025
+          </h3>
+          <div className="mt-6 overflow-x-auto">
+            <table className="min-w-[920px] border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-outline-variant bg-surface-container-low text-primary">
+                  <th className="p-4 font-bold">Tipologia di evento</th>
+                  <th className="p-4 font-bold">N. eventi</th>
+                  <th className="p-4 font-bold">Analisi</th>
+                  <th className="p-4 font-bold">Azioni adottate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parmEvents.map((event) => (
+                  <tr className="border-b border-outline-variant/60" key={event.type}>
+                    <td className="p-4 font-bold text-on-surface">{event.type}</td>
+                    <td className="p-4 text-on-surface-variant">{event.count}</td>
+                    <td className="p-4 text-on-surface-variant">{event.analysis}</td>
+                    <td className="p-4 text-on-surface-variant">{event.actions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-6 leading-relaxed text-on-surface-variant">
+            Nel corso dell'anno 2025 gli eventi rilevati sono stati analizzati
+            dall'equipe della struttura attraverso strumenti di verifica interna,
+            con l'obiettivo di garantire la sicurezza degli ospiti, la qualita
+            dell'assistenza e il miglioramento continuo dei processi organizzativi
+            e assistenziali.
+          </p>
+        </section>
+
+        <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <h3 className="text-2xl font-bold text-primary">
+            Monitoraggio eventi con rilevanza medico-legale
+          </h3>
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {legalMonitoring.map(([label, count, result]) => (
+              <article
+                className="border-l-4 border-primary bg-surface-container-low p-5"
+                key={label}
+              >
+                <p className="text-sm font-bold text-on-surface">{label}</p>
+                <p className="mt-3 text-4xl font-bold text-primary">{count}</p>
+                <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">
+                  {result}
+                </p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-6 leading-relaxed text-on-surface-variant">
+            Nel 2025 non si sono verificati eventi che abbiano determinato
+            conseguenze di natura legale, denunce da parte di ospiti o familiari,
+            ne richieste di risarcimento con apertura di pratiche assicurative.
+          </p>
+        </section>
+
+        <section className="rounded-xl border border-outline-variant bg-white p-6 shadow-sm md:p-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant lg:col-span-7">
+              <h3 className="text-2xl font-bold text-primary">
+                Risultati soddisfazione utenti
+              </h3>
+              <p>
+                Nel corso dell'anno 2025 e stato somministrato il questionario di
+                soddisfazione agli ospiti e, ove necessario, ai loro familiari o
+                caregiver. Sono state raccolte e analizzate 38 schede di
+                valutazione, per un totale di 684 risposte complessive.
+              </p>
+              <BulletList items={satisfactionAreas} />
+            </div>
+
+            <aside className="space-y-4 lg:col-span-5">
+              {satisfactionResults.map(([label, value]) => (
+                <div className="rounded-lg bg-surface-container-low p-5" key={label}>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-bold text-on-surface">{label}</span>
+                    <span className="text-2xl font-bold text-primary">{value}</span>
+                  </div>
+                  <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
+                    <div
+                      className="h-full rounded-full bg-primary"
+                      style={{ width: value }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </aside>
+          </div>
+          <p className="mt-6 leading-relaxed text-on-surface-variant">
+            L'analisi evidenzia un livello di soddisfazione complessivamente
+            positivo. I livelli di gradimento piu elevati riguardano gentilezza e
+            disponibilita del personale, assistenza infermieristica e ausiliaria,
+            igiene personale degli ospiti e clima di accoglienza della struttura.
+          </p>
+        </section>
+
+        <section className="rounded-xl border border-primary/30 bg-primary/5 p-6 md:p-8">
+          <h3 className="text-2xl font-bold text-primary">
+            Gestione della lista di attesa
+          </h3>
+          <div className="mt-5 space-y-4 leading-relaxed text-on-surface-variant">
+            <p>
+              Presso la RSA Valle d'Argento 2 non e presente una lista d'attesa
+              gestita direttamente dalla struttura, in quanto tutti i posti letto
+              sono accreditati con il Servizio Sanitario Regionale.
+            </p>
+            <p>
+              L'accesso alla Residenza avviene esclusivamente attraverso il
+              percorso previsto dalla normativa regionale: richieste di
+              inserimento, formazione e gestione delle liste d'attesa, nonche
+              autorizzazione agli ingressi, sono di competenza del Distretto
+              Sanitario territorialmente competente.
+            </p>
+            <p>
+              La struttura provvede all'accoglienza degli utenti sulla base delle
+              autorizzazioni e delle assegnazioni trasmesse dal Distretto
+              Sanitario, nel rispetto della disponibilita dei posti letto
+              accreditati e delle procedure previste dalla programmazione
+              sociosanitaria regionale.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
@@ -707,6 +972,26 @@ function RiskManagementTab() {
         </section>
       </div>
     </div>
+  );
+}
+
+function InfoPanel({ title, items }: { title: string; items: string[] }) {
+  return (
+    <article className="rounded-lg bg-surface-container-low p-5">
+      <h4 className="font-bold text-primary">{title}</h4>
+      <ul className="mt-4 space-y-3">
+        {items.map((item) => (
+          <li className="flex items-start gap-3" key={item}>
+            <span className="material-symbols-outlined mt-0.5 text-sm text-primary">
+              check_circle
+            </span>
+            <span className="text-sm leading-relaxed text-on-surface-variant">
+              {item}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </article>
   );
 }
 
