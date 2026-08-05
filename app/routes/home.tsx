@@ -1,6 +1,20 @@
 import type { Route } from "./+types/home";
 import type { CSSProperties } from "react";
+import type { Icon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
+import { BrainIcon } from "@phosphor-icons/react/Brain";
+import { ChurchIcon } from "@phosphor-icons/react/Church";
+import { ConfettiIcon } from "@phosphor-icons/react/Confetti";
+import { FirstAidKitIcon } from "@phosphor-icons/react/FirstAidKit";
+import { ForkKnifeIcon } from "@phosphor-icons/react/ForkKnife";
+import { HandHeartIcon } from "@phosphor-icons/react/HandHeart";
+import { HeartbeatIcon } from "@phosphor-icons/react/Heartbeat";
+import { HouseLineIcon } from "@phosphor-icons/react/HouseLine";
+import { PottedPlantIcon } from "@phosphor-icons/react/PottedPlant";
+import { SparkleIcon } from "@phosphor-icons/react/Sparkle";
+import { StethoscopeIcon } from "@phosphor-icons/react/Stethoscope";
+import { UsersThreeIcon } from "@phosphor-icons/react/UsersThree";
+import { WheelchairMotionIcon } from "@phosphor-icons/react/WheelchairMotion";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 
 export function meta({}: Route.MetaArgs) {
@@ -288,6 +302,33 @@ const services: Service[] = [
 ];
 
 const loopedServices = [...services, ...services];
+
+const serviceIcons: Record<string, Icon> = {
+  medical_services: StethoscopeIcon,
+  health_and_safety: FirstAidKitIcon,
+  accessibility_new: WheelchairMotionIcon,
+  psychology: BrainIcon,
+  support_agent: HandHeartIcon,
+  diversity_3: UsersThreeIcon,
+  volunteer_activism: HeartbeatIcon,
+  spa: PottedPlantIcon,
+  room_service: ForkKnifeIcon,
+  celebration: ConfettiIcon,
+  church: ChurchIcon,
+  add_circle: HouseLineIcon,
+};
+
+function ServiceIconGlyph({
+  className,
+  icon,
+}: {
+  className?: string;
+  icon: string;
+}) {
+  const Icon = serviceIcons[icon] ?? HouseLineIcon;
+
+  return <Icon aria-hidden="true" className={className} weight="duotone" />;
+}
 
 export default function Home() {
   const servicesScrollerRef = useRef<HTMLDivElement>(null);
@@ -619,12 +660,16 @@ export default function Home() {
                   }
                   type="button"
                 >
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-fixed/30 transition-all duration-300 group-hover:bg-primary">
-                    <span className="material-symbols-outlined filled text-4xl text-primary transition-all duration-300 group-hover:text-white">
-                      {service.icon}
-                    </span>
+                  <span className="relative flex h-24 w-24 items-center justify-center rounded-[2rem] border border-secondary/25 bg-secondary/10 transition-all duration-300 group-hover:border-secondary/50 group-hover:bg-secondary/15">
+                    <span className="absolute right-3 top-3 h-3 w-3 rounded-full bg-soft-gold/70" />
+                    <ServiceIconGlyph
+                      className="h-12 w-12 text-secondary transition-all duration-300 group-hover:scale-110 group-hover:text-primary"
+                      icon={service.icon}
+                    />
                   </span>
-                  <span className="text-sm font-bold text-primary">{service.label}</span>
+                  <span className="text-sm font-bold text-on-surface">
+                    {service.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -760,10 +805,11 @@ export default function Home() {
           <div className="relative max-h-[88vh] w-full max-w-3xl overflow-hidden rounded-xl bg-surface shadow-2xl">
             <div className="max-h-[88vh] overflow-y-auto p-6 md:p-10">
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-fixed/30">
-                  <span className="material-symbols-outlined filled text-3xl text-primary">
-                    {selectedService.icon}
-                  </span>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary/10">
+                  <ServiceIconGlyph
+                    className="h-7 w-7 text-secondary"
+                    icon={selectedService.icon}
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-primary">
                   {selectedService.title}
