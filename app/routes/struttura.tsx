@@ -157,7 +157,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="bg-surface py-16">
+        <section id="ambienti-spazi-interni" className="scroll-mt-28 bg-surface py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 md:px-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -211,7 +211,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="bg-surface-container-low py-16">
+        <section id="moduli" className="scroll-mt-28 bg-surface-container-low py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-12">
             <div className="mb-10 max-w-3xl">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -245,7 +245,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section id="spazi-ambienti-esterni" className="scroll-mt-28 py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2 md:px-12">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -276,7 +276,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="bg-surface-container-low py-16">
+        <section id="camere-degenza" className="scroll-mt-28 bg-surface-container-low py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 md:grid-cols-12 md:px-12">
             <div className="md:col-span-5">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -312,7 +312,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section id="ambienti-vita-collettivi" className="scroll-mt-28 py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 md:px-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -345,7 +345,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="bg-surface-container-low py-16">
+        <section id="attivita-giornata" className="scroll-mt-28 bg-surface-container-low py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-12">
             <div className="mb-10 max-w-3xl">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -387,7 +387,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section id="vita-comunita" className="scroll-mt-28 py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 md:grid-cols-12 md:px-12">
             <div className="md:col-span-5">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
@@ -450,7 +450,7 @@ export default function Struttura() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section id="orari-visita" className="scroll-mt-28 py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-12 md:px-12">
             <div className="md:col-span-7">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">

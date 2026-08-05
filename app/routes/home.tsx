@@ -287,6 +287,8 @@ const services: Service[] = [
   },
 ];
 
+const loopedServices = [...services, ...services];
+
 export default function Home() {
   const servicesScrollerRef = useRef<HTMLDivElement>(null);
   const [selectedService, setSelectedService] = useState<(typeof services)[number] | null>(
@@ -321,6 +323,18 @@ export default function Home() {
       return;
     }
 
+    const loopWidth = scroller.scrollWidth / 2;
+
+    if (loopWidth > 0) {
+      if (direction === "left" && scroller.scrollLeft <= 10) {
+        scroller.scrollLeft += loopWidth;
+      }
+
+      if (direction === "right" && scroller.scrollLeft >= loopWidth - 370) {
+        scroller.scrollLeft -= loopWidth;
+      }
+    }
+
     scroller.scrollBy({
       left: direction === "left" ? -360 : 360,
       behavior: "smooth",
@@ -342,20 +356,40 @@ export default function Home() {
           </div>
 
           <div className="relative z-20 mx-auto w-full max-w-7xl px-4 text-white [text-shadow:0_2px_18px_rgb(0_0_0_/_0.45)] md:px-12">
-            <div className="max-w-2xl">
-              <span className="mb-6 inline-block rounded-full border border-soft-gold/30 bg-soft-gold/20 px-4 py-1 text-sm font-bold uppercase text-soft-gold backdrop-blur-sm">
+            <div className="max-w-4xl">
+              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/90 px-5 py-2 text-sm font-extrabold uppercase text-primary ring-1 ring-soft-gold/40 backdrop-blur-sm [text-shadow:none]">
+                <span className="material-symbols-outlined filled text-lg">
+                  verified
+                </span>
                 Eccellenza Certificata ISO 9001
               </span>
               <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
                 ACCOGLIAMO CON IL CUORE, ASSISTIAMO CON COMPETENZA
               </h1>
-              <p className="mb-10 max-w-xl text-lg leading-relaxed text-surface-variant md:text-xl">
-                Una residenza immersa nel verde dedicata al benessere e alla dignita
-                dei nostri ospiti.
-              </p>
-              <a className="btn-ghost-light" href="#services">
-                Scopri i servizi
-              </a>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <a
+                  className="group inline-flex w-fit items-center justify-center gap-4 rounded-lg bg-white px-8 py-5 text-lg font-extrabold uppercase text-primary ring-2 ring-soft-gold/80 transition-all hover:-translate-y-0.5 hover:bg-soft-gold hover:text-deep-navy focus:outline-none focus:ring-4 focus:ring-white/80 md:px-10 md:text-xl [text-shadow:none]"
+                  href="#services"
+                >
+                  <span className="material-symbols-outlined filled text-3xl">
+                    medical_services
+                  </span>
+                  <span>Scopri i servizi</span>
+                  <span className="material-symbols-outlined transition-transform duration-300 group-hover:translate-y-1">
+                    arrow_downward
+                  </span>
+                </a>
+
+                <a
+                  className="group inline-flex w-fit items-center justify-center gap-3 rounded-lg border border-white bg-white px-7 py-5 text-lg font-extrabold uppercase text-primary transition-all hover:-translate-y-0.5 hover:bg-soft-gold hover:text-deep-navy focus:outline-none focus:ring-4 focus:ring-white/70 md:px-9 md:text-xl [text-shadow:none]"
+                  href="/accoglienza#modalita-accesso"
+                >
+                  <span className="material-symbols-outlined text-3xl">
+                    how_to_reg
+                  </span>
+                  <span>Modalita di accesso</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -570,17 +604,17 @@ export default function Home() {
             </button>
 
             <div
-              className="no-scrollbar flex min-w-0 flex-1 snap-x gap-8 overflow-x-auto scroll-smooth pb-8"
+              className="no-scrollbar flex min-w-0 flex-1 gap-8 overflow-x-auto pb-8"
               ref={servicesScrollerRef}
             >
-              {services.map((service, index) => (
+              {loopedServices.map((service, index) => (
                 <button
-                  className="scroll-reveal-item group flex w-40 shrink-0 snap-center flex-col items-center gap-4 text-center"
-                  key={service.label}
+                  className="scroll-reveal-item group flex w-40 shrink-0 flex-col items-center gap-4 text-center"
+                  key={`${service.label}-${index}`}
                   onClick={() => setSelectedService(service)}
                   style={
                     {
-                      "--reveal-delay": `${Math.min(index * 70, 560)}ms`,
+                      "--reveal-delay": `${Math.min((index % services.length) * 70, 560)}ms`,
                     } as CSSProperties
                   }
                   type="button"
@@ -606,7 +640,7 @@ export default function Home() {
           </div>
 
           <p className="-mt-3 text-center text-sm font-bold text-primary underline decoration-primary decoration-2 underline-offset-4">
-            Scorri per vedere tutti i servizi
+            Scorri per vedere tutti i servizi e cliccaci sopra per scoprirli
           </p>
         </section>
 

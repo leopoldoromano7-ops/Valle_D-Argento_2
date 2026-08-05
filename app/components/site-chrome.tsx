@@ -4,10 +4,45 @@ import { useLocation } from "react-router";
 const logoUrl = "/assets/logo-argento-transparent.png";
 
 const navItems = [
+  { id: "home", label: "Home", href: "/" },
   { id: "struttura", label: "La Residenza", href: "/struttura" },
   { id: "accoglienza", label: "Accoglienza", href: "/accoglienza" },
   { id: "info", label: "Informazioni", href: "/informazioni" },
+  { id: "news", label: "News", href: "/news" },
   { id: "contact", label: "Contatti", href: "/contatti" },
+];
+
+const residenceLinks = [
+  { label: "Panoramica", href: "/struttura" },
+  {
+    label: "Ambienti e spazi interni",
+    href: "/struttura#ambienti-spazi-interni",
+  },
+  {
+    label: "Moduli",
+    href: "/struttura#moduli",
+  },
+  {
+    label: "Spazi e ambienti esterni",
+    href: "/struttura#spazi-ambienti-esterni",
+  },
+  {
+    label: "Camere di degenza",
+    href: "/struttura#camere-degenza",
+  },
+  {
+    label: "Ambienti di vita collettivi",
+    href: "/struttura#ambienti-vita-collettivi",
+  },
+  { label: "Attivita di giornata", href: "/struttura#attivita-giornata" },
+  {
+    label: "La vita in comunita",
+    href: "/struttura#vita-comunita",
+  },
+  {
+    label: "Orari di visita consigliati",
+    href: "/struttura#orari-visita",
+  },
 ];
 
 const contactEmail = "rsa.valledargento2@gmail.com";
@@ -15,13 +50,18 @@ const contactEmail = "rsa.valledargento2@gmail.com";
 export function SiteHeader() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isResidenceOpen, setIsResidenceOpen] = useState(false);
   const activeItem =
-    location.pathname === "/struttura"
+    location.pathname === "/"
+      ? "home"
+      : location.pathname === "/struttura"
       ? "struttura"
       : location.pathname === "/accoglienza"
         ? "accoglienza"
       : location.pathname === "/informazioni"
         ? "info"
+      : location.pathname === "/news"
+        ? "news"
       : location.pathname === "/contatti"
         ? "contact"
       : location.hash.replace("#", "") || "home";
@@ -35,15 +75,7 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 z-50 w-full bg-surface/90 shadow-sm backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-center gap-5 px-4 py-4 md:px-12">
-        <nav className="hidden items-center gap-5 md:flex">
-          {navItems.slice(0, 2).map((item) => (
-            <a className={navClass(item.id)} href={item.href} key={item.id}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 md:px-12">
         <a
           className="logo-pop flex shrink-0 items-center transition-transform duration-200 active:scale-105"
           href="/"
@@ -57,17 +89,48 @@ export function SiteHeader() {
         </a>
 
         <nav className="hidden items-center gap-5 md:flex">
-          {navItems.slice(2).map((item) => (
-            <a className={navClass(item.id)} href={item.href} key={item.id}>
-              {item.label}
-            </a>
+          {navItems.map((item) => (
+            item.id === "struttura" ? (
+              <div className="relative" key={item.id}>
+                <button
+                  aria-expanded={isResidenceOpen}
+                  className={`${navClass(item.id)} flex items-center gap-1`}
+                  onClick={() => setIsResidenceOpen((open) => !open)}
+                  type="button"
+                >
+                  <span>{item.label}</span>
+                  <span className="material-symbols-outlined text-lg">
+                    expand_more
+                  </span>
+                </button>
+
+                {isResidenceOpen && (
+                  <div className="absolute left-0 top-full mt-4 max-h-[70vh] w-80 overflow-y-auto border border-outline-variant/60 bg-white p-2 text-left shadow-xl">
+                    {residenceLinks.map((link) => (
+                      <a
+                        className="block rounded-md px-4 py-3 text-sm font-bold text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
+                        href={link.href}
+                        key={link.href}
+                        onClick={() => setIsResidenceOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a className={navClass(item.id)} href={item.href} key={item.id}>
+                {item.label}
+              </a>
+            )
           ))}
         </nav>
 
         <button
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Chiudi menu" : "Apri menu"}
-          className="absolute right-4 flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant bg-white/80 text-primary shadow-sm transition-all hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant bg-white/80 text-primary shadow-sm transition-all hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 md:hidden"
           onClick={() => setIsMenuOpen((open) => !open)}
           type="button"
         >
@@ -81,18 +144,56 @@ export function SiteHeader() {
         <nav className="border-t border-outline-variant/50 bg-surface px-4 py-3 shadow-md md:hidden">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-2">
             {navItems.map((item) => (
-              <a
-                className={`rounded-lg px-4 py-3 font-bold transition-colors ${
-                  activeItem === item.id
-                    ? "bg-primary text-white"
-                    : "text-on-surface-variant hover:bg-surface-container"
-                }`}
-                href={item.href}
-                key={item.id}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
+              item.id === "struttura" ? (
+                <div key={item.id}>
+                  <button
+                    aria-expanded={isResidenceOpen}
+                    className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-left font-bold transition-colors ${
+                      activeItem === item.id
+                        ? "bg-primary text-white"
+                        : "text-on-surface-variant hover:bg-surface-container"
+                    }`}
+                    onClick={() => setIsResidenceOpen((open) => !open)}
+                    type="button"
+                  >
+                    <span>{item.label}</span>
+                    <span className="material-symbols-outlined">
+                      {isResidenceOpen ? "expand_less" : "expand_more"}
+                    </span>
+                  </button>
+
+                  {isResidenceOpen && (
+                    <div className="mt-2 grid gap-1 border-l-4 border-primary/30 pl-3">
+                      {residenceLinks.map((link) => (
+                        <a
+                          className="rounded-lg px-4 py-3 text-sm font-bold text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
+                          href={link.href}
+                          key={link.href}
+                          onClick={() => {
+                            setIsResidenceOpen(false);
+                            setIsMenuOpen(false);
+                          }}
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <a
+                  className={`rounded-lg px-4 py-3 font-bold transition-colors ${
+                    activeItem === item.id
+                      ? "bg-primary text-white"
+                      : "text-on-surface-variant hover:bg-surface-container"
+                  }`}
+                  href={item.href}
+                  key={item.id}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              )
             ))}
           </div>
         </nav>

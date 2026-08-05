@@ -124,7 +124,7 @@ export default function Accoglienza() {
           </div>
         </section>
 
-        <section className="bg-surface-container-low py-16">
+        <section id="modalita-accesso" className="scroll-mt-28 bg-surface-container-low py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-12 md:px-12">
             <div className="space-y-5 text-lg leading-relaxed text-on-surface-variant md:col-span-7">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary">
