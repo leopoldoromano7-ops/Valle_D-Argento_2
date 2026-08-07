@@ -32,14 +32,38 @@ const datItems = [
 ];
 
 const usefulDocuments = [
-  "Carta dei Servizi",
-  "Regolamento",
-  "Informativa Privacy",
-  "Documenti ingresso ospiti",
-  "Corredo personale ospite",
-  "Politica della qualita",
-  "Modulo reclami, encomi, suggerimenti",
-  "Coordinate bancarie",
+  {
+    label: "Carta dei Servizi",
+    href: "/documenti/carta-dei-servizi.pdf",
+  },
+  {
+    label: "Regolamento Interno",
+    href: "/documenti/regolamento-interno.pdf",
+  },
+  {
+    label: "Informativa Privacy",
+    href: "/documenti/informativa-privacy.pdf",
+  },
+  {
+    label: "Corredo personale",
+    href: "/documenti/corredo-personale.pdf",
+  },
+  {
+    label: "Modulo suggerimenti e reclami ospiti",
+    href: "/documenti/modulo-suggerimenti-reclami-ospiti.pdf",
+  },
+  {
+    label: "Coordinate bancarie",
+    href: "/documenti/coordinate-bancarie.pdf",
+  },
+  {
+    label: "Certificazione Qualita",
+    href: "/documenti/certificazione-qualita.pdf",
+  },
+  {
+    label: "Politica della Qualita",
+    href: "/documenti/politica-della-qualita.pdf",
+  },
 ];
 
 const excludedCosts = [
@@ -296,20 +320,25 @@ function DocumentsTab() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
           {usefulDocuments.map((document) => (
-            <div
-              className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant bg-white p-5 shadow-sm"
-              key={document}
+            <a
+              aria-label={`Scarica ${document.label}`}
+              className="flex items-center justify-between gap-4 rounded-xl border border-outline-variant bg-white p-5 shadow-sm transition-colors hover:border-primary hover:text-primary"
+              download
+              href={document.href}
+              key={document.href}
             >
               <div className="flex items-center gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <span className="material-symbols-outlined">description</span>
                 </span>
-                <span className="font-bold text-on-surface">{document}</span>
+                <span className="font-bold text-on-surface">
+                  {document.label}
+                </span>
               </div>
               <span className="material-symbols-outlined text-primary">
                 download
               </span>
-            </div>
+            </a>
           ))}
         </div>
       </div>
