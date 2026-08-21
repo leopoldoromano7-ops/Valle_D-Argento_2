@@ -102,31 +102,31 @@ const parmActivities = [
 const parmEvents = [
   {
     type: "Cadute accidentali degli ospiti",
-    count: "3",
+    count: "5",
     analysis: "Eventi valutati dall'equipe assistenziale con analisi dei fattori di rischio individuali e ambientali",
     actions: "Rivalutazione del rischio caduta, aggiornamento PAI, interventi di prevenzione e sorveglianza",
   },
   {
     type: "Lesioni da pressione",
-    count: "2",
+    count: "6",
     analysis: "Monitoraggio degli ospiti a rischio e verifica dell'applicazione delle procedure assistenziali",
     actions: "Valutazione periodica della cute, utilizzo di presidi antidecubito e pianificazione assistenziale personalizzata",
   },
   {
     type: "Errori o criticita nella gestione della terapia farmacologica",
-    count: "1",
+    count: "0",
     analysis: "Verifica delle modalita di prescrizione, preparazione e somministrazione della terapia",
     actions: "Controlli periodici, applicazione delle procedure interne e sensibilizzazione del personale",
   },
   {
     type: "Eventi infettivi correlati all'assistenza",
-    count: "0",
+    count: "1",
     analysis: "Monitoraggio degli episodi infettivi e delle misure di prevenzione adottate",
     actions: "Applicazione protocolli igienico-sanitari, formazione operatori e controllo delle procedure",
   },
   {
     type: "Reclami/segnalazioni di ospiti e familiari",
-    count: "2",
+    count: "1",
     analysis: "Analisi delle segnalazioni ricevute e valutazione delle criticita organizzative",
     actions: "Gestione delle segnalazioni, risposta agli interessati e attivazione di eventuali miglioramenti",
   },
@@ -138,7 +138,7 @@ const parmEvents = [
   },
   {
     type: "Near miss",
-    count: "1",
+    count: "3",
     analysis: "Raccolta e analisi delle segnalazioni per migliorare i processi",
     actions: "Azioni preventive e revisione delle procedure operative",
   },
