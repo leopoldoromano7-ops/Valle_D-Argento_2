@@ -12,6 +12,9 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+const welcomeStockImage =
+  "https://images.unsplash.com/photo-1773227054096-2857c73ef2da?auto=format&fit=crop&w=1200&q=80";
+
 const healthDocuments = [
   "Certificazione del medico curante relativa alle condizioni cliniche dell'utente",
   "Cartelle cliniche e lettere di dimissione ospedaliera di ricoveri precedenti",
@@ -74,19 +77,27 @@ export default function Accoglienza() {
               </p>
             </div>
 
-            <aside className="h-fit border-l-4 border-primary bg-white p-6 shadow-sm md:col-span-5">
-              <h2 className="text-2xl font-bold text-primary">
-                Ufficio accettazione
-              </h2>
-              <p className="mt-4 leading-relaxed text-on-surface-variant">
-                Per informazioni sulle modalita di accesso e sulla documentazione
-                necessaria e possibile contattare l'ufficio accettazione.
-              </p>
-              <div className="mt-6 space-y-3 font-bold text-on-surface">
-                <p>Tel. 089 803498</p>
-                <p>Email rsa.valledargento2@gmail.com</p>
-              </div>
-            </aside>
+            <div className="space-y-5 md:col-span-5">
+              <img
+                alt="Ospiti anziani accolti in un ambiente residenziale"
+                className="h-64 w-full rounded-xl object-cover shadow-lg"
+                src={welcomeStockImage}
+              />
+
+              <aside className="h-fit border-l-4 border-primary bg-white p-6 shadow-sm">
+                <h2 className="text-2xl font-bold text-primary">
+                  Ufficio accettazione
+                </h2>
+                <p className="mt-4 leading-relaxed text-on-surface-variant">
+                  Per informazioni sulle modalita di accesso e sulla documentazione
+                  necessaria e possibile contattare l'ufficio accettazione.
+                </p>
+                <div className="mt-6 space-y-3 font-bold text-on-surface">
+                  <p>Tel. 089 803498</p>
+                  <p>Email rsa.valledargento2@gmail.com</p>
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
 

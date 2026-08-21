@@ -16,7 +16,7 @@ const mailToAddress = "rsa.valledargento2@gmail.com";
 const pecAddress = "nuovavalledargento@pec.it";
 const mapsQuery = "Via U. Linguiti 53, 84095 Giffoni Valle Piana SA";
 const contactStockImage =
-  "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80";
+  "https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?auto=format&fit=crop&w=1200&q=80";
 
 export default function Contatti() {
   return (
@@ -130,7 +130,7 @@ export default function Contatti() {
               Inviaci un messaggio
             </h2>
             <img
-              alt="Operatore al telefono presso una postazione informativa"
+              alt="Telefono, quaderno e penna su una scrivania"
               className="mb-8 h-56 w-full rounded-lg object-cover"
               loading="lazy"
               src={contactStockImage}
