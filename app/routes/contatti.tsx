@@ -13,6 +13,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const mailToAddress = "rsa.valledargento2@gmail.com";
+const pecAddress = "nuovavalledargento@pec.it";
 const mapsQuery = "Via U. Linguiti 53, 84095 Giffoni Valle Piana SA";
 
 export default function Contatti() {
@@ -62,6 +63,20 @@ export default function Contatti() {
                   >
                     {mailToAddress}
                   </a>
+                </ContactRow>
+                <ContactRow icon="alternate_email">
+                  <a
+                    className="text-on-surface-variant hover:text-primary"
+                    href={`mailto:${pecAddress}`}
+                  >
+                    PEC {pecAddress}
+                  </a>
+                </ContactRow>
+                <ContactRow icon="receipt_long">
+                  <div className="space-y-1 text-on-surface-variant">
+                    <p>P.IVA 06054190654</p>
+                    <p>n. REA SA-493717</p>
+                  </div>
                 </ContactRow>
                 <div className="border-t border-outline-variant pt-6">
                   <ContactRow icon="person">

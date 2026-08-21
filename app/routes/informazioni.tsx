@@ -67,10 +67,10 @@ const usefulDocuments = [
 ];
 
 const excludedCosts = [
-  "Medicinali, materiale sanitario e medicazioni",
+  "Medicinali, materiale sanitario e da medicazione non erogato dal SSN",
   "Visite specialistiche a pagamento",
   "Ticket su esami strumentali e di laboratorio",
-  "Trasporto e accompagnamento in ospedale",
+  "Trasporto e accompagnamento in ospedale, fatte salve le ipotesi di emergenza sanitaria",
   "Oneri concernenti decesso e spese funerarie",
 ];
 

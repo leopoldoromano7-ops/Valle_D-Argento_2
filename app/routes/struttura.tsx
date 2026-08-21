@@ -67,8 +67,13 @@ const dailySchedule = [
   },
   {
     time: "Ore 8.15",
-    title: "Colazione e attivita del mattino",
-    text: "Colazione nelle aree dedicate, attivita di animazione, fisioterapia, riabilitazione e prestazioni mediche e infermieristiche previste.",
+    title: "Colazione",
+    text: "Colazione nelle aree dedicate e primi momenti di pausa e convivialita.",
+  },
+  {
+    time: "Ore 8.45",
+    title: "Attivita mattutine",
+    text: "La mattinata e dedicata al benessere, alla socializzazione e al mantenimento delle capacita individuali. Gli ospiti possono partecipare, secondo le proprie esigenze e condizioni, ad attivita di animazione, stimolazione cognitiva, musica, lettura, giochi, laboratori creativi e ginnastica dolce. Inoltre sono svolte le attivita di fisioterapia e riabilitazione, insieme alle prestazioni mediche, infermieristiche e assistenziali programmate. La mattinata prevede anche momenti di pausa e convivialita.",
   },
   {
     time: "Ore 12.00",

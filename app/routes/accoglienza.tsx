@@ -137,7 +137,7 @@ export default function Accoglienza() {
                 La RSA Valle d'Argento 2 e una struttura accreditata al Servizio
                 Sanitario Nazionale regionale. L'accesso dell'utente proveniente
                 dal proprio domicilio avviene generalmente attraverso un percorso
-                autorizzato dall'ASL, non con il solo contatto diretto con la
+                autorizzato dall'ASL, non attraverso il contatto diretto con la
                 struttura.
               </p>
               <p>

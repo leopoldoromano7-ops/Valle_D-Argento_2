@@ -492,9 +492,11 @@ export default function Home() {
                   La RSA Valle d'Argento 2, con sede a Giffoni Valle Piana (SA),
                   e una Residenza Sanitaria Assistenziale accreditata con il
                   Servizio Sanitario Nazionale e convenzionata con l'ASL Salerno.
-                  Da oltre vent'anni rappresenta un punto di riferimento per
-                  l'assistenza residenziale di persone anziane non autosufficienti
-                  e di ospiti affetti da demenze e malattie neurodegenerative.
+                  Rappresenta un punto di riferimento per l'erogazione di servizi
+                  e attivita a supporto della persona. Assistenza residenziale
+                  rivolta ad anziani, soggetti con condizioni di fragilita e/o
+                  patologie, persone non autosufficienti, con compromissione
+                  cognitiva e patologie neurodegenerative.
                 </p>
                 <p>
                   Nata nel 2003 dalla visione imprenditoriale dei fratelli
