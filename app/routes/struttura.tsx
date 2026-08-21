@@ -16,6 +16,8 @@ export function meta({}: Route.MetaArgs) {
 
 const facilityImage = "/assets/struttura-giardino.jpg";
 const facilityCloseImage = "/assets/struttura-esterno.jpg";
+const communityStockImage =
+  "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=900&q=80";
 
 // Dati editoriali della pagina: modificare questi array aggiorna le card.
 const moduleSpaces = [
@@ -441,13 +443,15 @@ export default function Struttura() {
 
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <img
-                  alt="Giardino e spazi esterni della RSA Valle d'Argento 2"
+                  alt="Persone riunite in un momento di socializzazione"
                   className="h-64 w-full object-cover shadow-lg"
-                  src={facilityImage}
+                  loading="lazy"
+                  src={communityStockImage}
                 />
                 <img
                   alt="Esterno della struttura Valle d'Argento 2"
                   className="h-64 w-full object-cover shadow-lg"
+                  loading="lazy"
                   src={facilityCloseImage}
                 />
               </div>

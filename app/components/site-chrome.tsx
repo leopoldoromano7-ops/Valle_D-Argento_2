@@ -60,7 +60,7 @@ export function SiteHeader() {
         ? "accoglienza"
       : location.pathname === "/informazioni"
         ? "info"
-      : location.pathname === "/news"
+      : location.pathname.startsWith("/news")
         ? "news"
       : location.pathname === "/contatti"
         ? "contact"
@@ -247,6 +247,8 @@ export function SiteFooter() {
             <ContactItem icon="location_on" text="Via U. Linguiti n. 53 - 84095 Giffoni Valle Piana (SA)" />
             <ContactItem icon="call" text="Tel. / fax 089.803.498" />
             <ContactItem icon="mail" text={contactEmail} />
+            <ContactItem icon="receipt_long" text="P.IVA 06054190654" />
+            <ContactItem icon="badge" text="n. REA SA-493717" />
           </ul>
         </div>
       </div>

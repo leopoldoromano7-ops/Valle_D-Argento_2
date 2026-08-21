@@ -33,6 +33,35 @@ const facilityImage = "/assets/foto-struttura.jpg";
 const accrediaImage = "/assets/accredia.png";
 const tuvAustriaImage = "/assets/tuv-austria-iso-9001.jpg";
 
+const serviceModalImages: Record<string, string> = {
+  medical_services:
+    "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80",
+  health_and_safety:
+    "https://images.unsplash.com/photo-1631815587646-b85a1bb027e1?auto=format&fit=crop&w=1200&q=80",
+  accessibility_new:
+    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80",
+  psychology:
+    "https://images.unsplash.com/photo-1758691462321-9b6c98c40f7e?auto=format&fit=crop&w=1200&q=80",
+  support_agent:
+    "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+  diversity_3:
+    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+  volunteer_activism:
+    "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
+  spa:
+    "https://images.pexels.com/photos/8834079/pexels-photo-8834079.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  room_service:
+    "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+  celebration:
+    "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80",
+  church:
+    "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1200&q=80",
+  add_circle:
+    "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+  default:
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+};
+
 type ServiceSection = {
   heading?: string;
   paragraphs: string[];
@@ -817,6 +846,16 @@ export default function Home() {
                   {selectedService.title}
                 </h3>
               </div>
+
+              <img
+                alt=""
+                className="mb-8 h-44 w-full rounded-lg object-cover md:h-56"
+                loading="lazy"
+                src={
+                  serviceModalImages[selectedService.icon] ??
+                  serviceModalImages.default
+                }
+              />
 
               <div className="mb-10 space-y-7">
                 {selectedService.sections.map((section) => (

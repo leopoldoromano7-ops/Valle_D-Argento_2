@@ -13,7 +13,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const facilityImage = "/assets/struttura-esterno.jpg";
+const documentsStockImage =
+  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80";
 
 // Configurazione delle tab: l'ordine qui e lo stesso mostrato nella pagina.
 const tabs = [
@@ -188,9 +189,9 @@ export default function Informazioni() {
 
             <div className="md:col-span-6">
               <img
-                alt="Esterno della RSA Valle d'Argento 2"
+                alt="Compilazione di documenti amministrativi"
                 className="h-80 w-full rounded-xl border-4 border-white object-cover shadow-lg"
-                src={facilityImage}
+                src={documentsStockImage}
               />
             </div>
           </div>

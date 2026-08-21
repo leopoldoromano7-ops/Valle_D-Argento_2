@@ -15,6 +15,8 @@ export function meta({}: Route.MetaArgs) {
 const mailToAddress = "rsa.valledargento2@gmail.com";
 const pecAddress = "nuovavalledargento@pec.it";
 const mapsQuery = "Via U. Linguiti 53, 84095 Giffoni Valle Piana SA";
+const contactStockImage =
+  "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80";
 
 export default function Contatti() {
   return (
@@ -127,6 +129,12 @@ export default function Contatti() {
             <h2 className="mb-8 text-2xl font-bold text-secondary md:text-3xl">
               Inviaci un messaggio
             </h2>
+            <img
+              alt="Operatore al telefono presso una postazione informativa"
+              className="mb-8 h-56 w-full rounded-lg object-cover"
+              loading="lazy"
+              src={contactStockImage}
+            />
             {/* Placeholder mailto: da sostituire con SMTP/API quando il cliente fornisce le credenziali. */}
             <form
               action={`mailto:${mailToAddress}`}
