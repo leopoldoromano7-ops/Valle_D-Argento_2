@@ -51,18 +51,22 @@ export function SiteHeader() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isResidenceOpen, setIsResidenceOpen] = useState(false);
+  const pathname =
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/+$/, "")
+      : location.pathname;
   const activeItem =
-    location.pathname === "/"
+    pathname === "/"
       ? "home"
-      : location.pathname === "/struttura"
+      : pathname === "/struttura"
       ? "struttura"
-      : location.pathname === "/accoglienza"
+      : pathname === "/accoglienza"
         ? "accoglienza"
-      : location.pathname === "/informazioni"
+      : pathname === "/informazioni"
         ? "info"
-      : location.pathname.startsWith("/news")
+      : pathname.startsWith("/news")
         ? "news"
-      : location.pathname === "/contatti"
+      : pathname === "/contatti"
         ? "contact"
       : location.hash.replace("#", "") || "home";
 
