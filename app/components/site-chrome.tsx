@@ -8,6 +8,7 @@ const navItems = [
   { id: "struttura", label: "La Residenza", href: "/struttura" },
   { id: "accoglienza", label: "Accoglienza", href: "/accoglienza" },
   { id: "info", label: "Informazioni", href: "/informazioni" },
+  { id: "news", label: "News", href: "/news" },
   { id: "contact", label: "Contatti", href: "/contatti" },
 ];
 
@@ -59,6 +60,8 @@ export function SiteHeader() {
         ? "accoglienza"
       : location.pathname === "/informazioni"
         ? "info"
+      : location.pathname.startsWith("/news")
+        ? "news"
       : location.pathname === "/contatti"
         ? "contact"
       : location.hash.replace("#", "") || "home";
