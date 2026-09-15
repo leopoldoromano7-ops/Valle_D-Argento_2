@@ -67,7 +67,7 @@ export function SiteHeader() {
       : location.hash.replace("#", "") || "home";
 
   const navClass = (item: string) =>
-    `nav-link border-b-2 pb-1 ${
+    `nav-link border-b-2 pb-1 hover:border-primary ${
       activeItem === item
         ? "border-primary text-primary"
         : "border-transparent"
