@@ -144,7 +144,11 @@ export default function Contatti() {
                       label="Facebook"
                       type="facebook"
                     />
-                    <SocialLink href="#" label="Instagram" type="instagram" />
+                    <SocialLink
+                      href="https://www.instagram.com/rsa_valledargento2_/"
+                      label="Instagram"
+                      type="instagram"
+                    />
                   </div>
                 </div>
               </div>
@@ -321,7 +325,7 @@ function SocialLink({
   return (
     <a
       aria-label={label}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant bg-surface-container-low text-primary transition-all hover:border-primary hover:bg-primary hover:text-white"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-outline-variant bg-surface-container-low text-primary transition-all hover:border-primary hover:bg-primary hover:text-white"
       href={href}
       rel={href === "#" ? undefined : "noreferrer"}
       target={href === "#" ? undefined : "_blank"}
@@ -333,7 +337,7 @@ function SocialLink({
 
 function FacebookIcon() {
   return (
-    <svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
       <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.24 22 17.08 22 12.06Z" />
     </svg>
   );
@@ -343,7 +347,7 @@ function InstagramIcon() {
   return (
     <svg
       aria-hidden="true"
-      className="h-5 w-5"
+      className="h-6 w-6"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"

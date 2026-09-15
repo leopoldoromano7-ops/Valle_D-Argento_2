@@ -405,8 +405,15 @@ export default function Home() {
       }
     }
 
+    const firstService = scroller.querySelector<HTMLElement>("button");
+    const scrollerStyle = window.getComputedStyle(scroller);
+    const gap = Number.parseFloat(scrollerStyle.columnGap || scrollerStyle.gap || "0");
+    const scrollAmount = firstService
+      ? firstService.offsetWidth + (Number.isNaN(gap) ? 0 : gap)
+      : 192;
+
     scroller.scrollBy({
-      left: direction === "left" ? -360 : 360,
+      left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
   };
