@@ -1,3 +1,5 @@
+import { useState } from "react";
+import type { FormEvent } from "react";
 import type { Route } from "./+types/contatti";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 
@@ -19,6 +21,50 @@ const contactStockImage =
   "https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?auto=format&fit=crop&w=1200&q=80";
 
 export default function Contatti() {
+  const [formStatus, setFormStatus] = useState<
+    { type: "success" | "error"; message: string } | null
+  >(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus(null);
+
+    const form = event.currentTarget;
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      const result = (await response.json().catch(() => null)) as {
+        message?: string;
+      } | null;
+
+      if (!response.ok) {
+        throw new Error(result?.message || "Invio non riuscito.");
+      }
+
+      form.reset();
+      setFormStatus({
+        type: "success",
+        message: result?.message || "Messaggio inviato correttamente.",
+      });
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Non siamo riusciti a inviare il messaggio. Riprova piu tardi.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       <SiteHeader />
@@ -135,13 +181,20 @@ export default function Contatti() {
               loading="lazy"
               src={contactStockImage}
             />
-            {/* Placeholder mailto: da sostituire con SMTP/API quando il cliente fornisce le credenziali. */}
             <form
-              action={`mailto:${mailToAddress}`}
+              action="/contact.php"
               className="grid grid-cols-1 gap-6 md:grid-cols-2"
-              encType="text/plain"
               method="post"
+              onSubmit={handleContactSubmit}
             >
+              <input
+                aria-hidden="true"
+                autoComplete="off"
+                className="hidden"
+                name="website"
+                tabIndex={-1}
+                type="text"
+              />
               <FormField
                 id="name"
                 label="Il tuo nome"
@@ -180,9 +233,21 @@ export default function Contatti() {
                 />
               </div>
               <div className="md:col-span-2">
-                <button className="btn-primary" type="submit">
+                {formStatus && (
+                  <p
+                    className={`mb-4 rounded-lg border px-4 py-3 text-sm font-bold ${
+                      formStatus.type === "success"
+                        ? "border-secondary/30 bg-secondary/10 text-secondary"
+                        : "border-red-200 bg-red-50 text-red-700"
+                    }`}
+                    role="status"
+                  >
+                    {formStatus.message}
+                  </p>
+                )}
+                <button className="btn-primary" disabled={isSubmitting} type="submit">
                   <span className="material-symbols-outlined filled">send</span>
-                  Invia Messaggio
+                  {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
                 </button>
               </div>
             </form>
